@@ -9,8 +9,13 @@ class PlacesController < ApplicationController
   end
 
   def create
-  Place.create(place_params)
+  @place = Place.create(place_params)
+  if @place.invalid?
+    flash[:error] ='<strong>Descriptions must be 3 to 140 characters long</strong>'
+     render :new 
+  else    
   redirect_to root_path
+  end
   end
 
   private
