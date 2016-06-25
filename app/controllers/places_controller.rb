@@ -1,7 +1,13 @@
 class PlacesController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :create]
 
   def index
-    @places=Place.all
+    puts params
+    if params[:q]
+      @places=Place.where('name ilike ?',"%#{params[:q]}%")
+    else
+      @places=Place.all
+    end
   end
 
   def new
@@ -9,10 +15,10 @@ class PlacesController < ApplicationController
   end
 
   def create
-  @place = Place.create(place_params)
+  @place = current_user.places.create!(place_params)
   if @place.invalid?
     flash[:error] ='<strong>Descriptions must be 3 to 140 characters long</strong>'
-     render :new 
+    render :new 
   else    
   redirect_to root_path
   end
