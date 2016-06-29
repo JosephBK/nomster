@@ -23,6 +23,9 @@ class PlacesController < ApplicationController
   redirect_to root_path
   end
   end
+  def show
+    @place = Place.find(params[:id])  
+  end
 
   private
 
