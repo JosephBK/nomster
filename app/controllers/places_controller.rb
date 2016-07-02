@@ -18,7 +18,7 @@ class PlacesController < ApplicationController
   @place = current_user.places.create!(place_params)
   if @place.invalid?
     flash[:error] ='<strong>Descriptions must be 3 to 140 characters long</strong>'
-    render :new 
+    render :new, status: :unprocessable_entity 
   else    
   redirect_to root_path
   end
@@ -38,7 +38,11 @@ class PlacesController < ApplicationController
       return render text: 'Not Allowed', status: :forbidden
     end
     @place.update_attributes(place_params)
+    if @place.valid?
     redirect_to root_path
+    else
+      render :edit, status: :unprocessable_entity  
+    end 
   end
   def destroy
     @place = Place.find(params[:id])
