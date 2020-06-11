@@ -26,7 +26,7 @@ gem 'sprockets', '2.12.5'
 gem 'sass-rails'
 gem 'simple_form'
 gem 'devise', '>= 3.2.4'
-gem "geocoder", "1.3.4"
+gem "geocoder", "1.6.1"
 gem "figaro", "1.0.0"
 gem 'sdoc', '~> 0.4.0', group: :doc
 
