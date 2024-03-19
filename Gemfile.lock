@@ -91,7 +91,7 @@ GEM
     mini_portile2 (2.8.5)
     minitest (5.20.0)
     multi_json (1.14.1)
-    nokogiri (1.15.5)
+    nokogiri (1.16.3)
       mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
     orm_adapter (0.5.0)
